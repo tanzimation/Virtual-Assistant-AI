@@ -7,13 +7,13 @@ import pyjokes
 
 listener = sr.Recognizer()
 tanzim = pyttsx3.init()
-voices = tanzim.getProperty('voices')
+voices = prospecto.getProperty('voices')
 tanzim.setProperty('voice', voices[0].id)
 
 
 def talk(text):
-    tanzim.say(text)
-    tanzim.runAndWait()
+    prospecto.say(text)
+    prospecto.runAndWait()
 
 
 def take_command():
@@ -23,9 +23,9 @@ def take_command():
             voice = listener.listen(push)
             command = listener.recognize_google(voice)
             command = command.lower()
-            if 'tanzim' in command:
+            if 'prospecto' in command:
                 print(command)
-                command = command.replace('tanzim', '')
+                command = command.replace('prospecto', '')
             else:
                 print("Sorry")
 
@@ -34,7 +34,7 @@ def take_command():
     return command
 
 
-def run_tanzim():
+def run_prospecto():
     command = take_command()
     if 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %S')
@@ -59,4 +59,4 @@ def run_tanzim():
 
 
 while True:
-    run_tanzim()
+    run_prospecto()
